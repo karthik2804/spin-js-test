@@ -1,0 +1,20 @@
+spin_manifest_version = 2
+
+[application]
+authors = ["karthik2804 <karthik.ganeshram@fermyon.com>"]
+description = ""
+name = "spin-js-runner"
+version = "0.1.0"
+
+[[trigger.http]]
+route = "/..."
+component = "spin-js-runner"
+
+[component.spin-js-runner]
+source = "target/spin-test.wasm"
+exclude_files = ["**/node_modules"]
+[component.spin-js-runner.build]
+command = "npm run build"
+watch = ["src/**/*.ts", "package.json"]
+[component.spin-js-runner.variables]
+karthik = "test"

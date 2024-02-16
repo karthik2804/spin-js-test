@@ -1,10 +1,15 @@
-import { test, assert } from '../spin-test/src/index'
-import { add } from './add'
+import { HandleRequest, HttpRequest, HttpResponse } from "@fermyon/spin-sdk"
+import { run } from '../spin-test/src/index'
 
-test("adding ints", async () => {
-    assert.isEqual(add(1, 1), 2, "addition of simple ints fails")
-})
+// Use Webpack's require.context to dynamically import test files
+const testsContext = (require as any).context('.', true, /\.test\.ts$/);
+testsContext.keys().forEach(testsContext);
 
-test("adding floats", async () => {
-    assert.isEqual(add(1.0, 2.0), 2.0, "addition of simple floats fails")
-})
+export const handleRequest: HandleRequest = async function (request: HttpRequest): Promise<HttpResponse> {
+    await run()
+    return {
+        status: 200,
+        headers: { "content-type": "text/plain" },
+        body: "Hello from TS-SDK"
+    }
+}

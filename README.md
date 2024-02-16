@@ -1,20 +1,24 @@
-## HTTP-TS template
+## Simple TS test runner for spin
 
-This is a simple template to get started with spin-js-sdk using typescript.
 
-### Build
+### Instal the dependencies
 
-```console
+```bash
 npm install
-spin build
 ```
 
-### Run
+### build and start the test
 
-```console
-spin up
+```bash
+npm run test 
 ```
 
-Or, use `spin watch` to run the app and rebuild on any changes to `package.json` or the files in `src`.
+To actually run the test
 
-Use e.g. `curl -v http://127.0.0.1:3000/hello` to test the endpoint.
+```bash
+curl localhost:3000
+```
+
+### Write a Test
+
+Create a new file `<name>.test.ts` and add the test inside, look at `utils/add.test.ts` for example for unit test and `spin_fns/variables.test.ts` for a test where the host function is mocked. 
